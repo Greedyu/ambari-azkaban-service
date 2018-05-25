@@ -25,7 +25,7 @@ class ExecutorServer(Script):
         from params import java_home
         Execute('wget --no-check-certificate {0}  -O /tmp/{1}'.format(AZKABAN_EXECUTOR_URL, AZKABAN_NAME))
         Execute(
-            'mkdir -p {0} {1} {2} || echo "whatever"'.format(
+            'mkdir -p {0} {1} {2} || echo "whateverss"'.format(
                 AZKABAN_HOME + '/conf',
                 AZKABAN_HOME + '/extlib',
                 AZKABAN_HOME + '/plugins/jobtypes',
@@ -55,7 +55,7 @@ class ExecutorServer(Script):
     def status(self, env):
         try:
             Execute(
-                'export AZ_CNT=`ps -ef |grep -v grep |grep azkaban-exec-server | wc -l` && `if [ $AZ_CNT -ne 0 ];then exit 0;else exit 3;fi `'
+                'export AZ_CNT=`ps -ef |grep -v grep |grep azkaban-solo-server | wc -l` && `if [ $AZ_CNT -ne 0 ];then exit 0;else exit 3;fi `'
             )
         except ExecutionFailed as ef:
             if ef.code == 3:

@@ -26,5 +26,7 @@ global_properties = config['configurations']['global.properties']
 log4j_properties = config['configurations']['log4j.properties']
 
 host_info = config['clusterHostInfo']
+
 host_level_params = config['hostLevelParams']
 java_home = host_level_params['java_home']
+

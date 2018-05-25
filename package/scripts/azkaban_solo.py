@@ -24,25 +24,21 @@ class WebServer(Script):
     def install(self, env):
         from params import java_home, azkaban_db
         Execute('wget --no-check-certificate {0}  -O /tmp/{1}'.format(AZKABAN_WEB_URL, AZKABAN_NAME))
-        Execute('wget --no-check-certificate {0}  -O /tmp/{1}'.format(AZKABAN_DB_URL, AZKABAN_SQL))
+        # Execute('wget --no-check-certificate {0}  -O /tmp/{1}'.format(AZKABAN_DB_URL, AZKABAN_SQL))
+        # Execute(
+        #     'mysql -h{0} -P{1} -D{2} -u{3} -p{4} < {5}'.format(
+        #         azkaban_db['mysql.host'],
+        #         azkaban_db['mysql.port'],
+        #         azkaban_db['mysql.database'],
+        #         azkaban_db['mysql.user'],
+        #         azkaban_db['mysql.password'],
+        #         '/tmp/{0}'.format(AZKABAN_SQL),
+        #     )
+        # )
         Execute(
-            'mysql -h{0} -P{1} -D{2} -u{3} -p{4} < {5}'.format(
-                azkaban_db['mysql.host'],
-                azkaban_db['mysql.port'],
-                azkaban_db['mysql.database'],
-                azkaban_db['mysql.user'],
-                azkaban_db['mysql.password'],
-                '/tmp/{0}'.format(AZKABAN_SQL),
-            )
+            'mkdir -p {0} || echo "whatever"'.format(AZKABAN_HOME)
         )
-        Execute(
-            'mkdir -p {0} {1} {2} || echo "whatever"'.format(
-                AZKABAN_HOME + '/conf',
-                AZKABAN_HOME + '/extlib',
-                AZKABAN_HOME + '/plugins/jobtypes',
-            )
-        )
-        Execute('echo execute.as.user=false > {0} '.format(AZKABAN_HOME + '/plugins/jobtypes/commonprivate.properties'))
+        # Execute('echo execute.as.user=false > {0} '.format(AZKABAN_HOME + '/plugins/jobtypes/commonprivate.properties'))
         Execute(
             'export JAVA_HOME={0} && tar -xf /tmp/{1} -C {2} --strip-components 1'.format(
                 java_home,
@@ -53,16 +49,16 @@ class WebServer(Script):
         self.configure(env)
 
     def stop(self, env):
-        Execute('cd {0} && bin/azkaban-web-shutdown.sh'.format(AZKABAN_HOME))
+        Execute('cd {0} && bin/shutdown-solo.sh'.format(AZKABAN_HOME))
 
     def start(self, env):
         self.configure(env)
-        Execute('cd {0} && bin/azkaban-web-start.sh'.format(AZKABAN_HOME))
+        Execute('cd {0} && source /etc/profile && bin/start-solo.sh'.format(AZKABAN_HOME))
 
     def status(self, env):
         try:
             Execute(
-                'export AZ_CNT=`ps -ef |grep -v grep |grep azkaban-web-server | wc -l` && `if [ $AZ_CNT -ne 0 ];then exit 0;else exit 3;fi `'
+                'export AZ_CNT=`ps -ef |grep -v grep |grep azkaban.soloserver | wc -l` && `if [ $AZ_CNT -ne 0 ];then exit 0;else exit 3;fi `'
             )
         except ExecutionFailed as ef:
             if ef.code == 3:
@@ -88,8 +84,8 @@ class WebServer(Script):
         with open(path.join(AZKABAN_CONF, 'global.properties'), 'w') as f:
             f.write(global_properties['content'])
 
-        with open(path.join(AZKABAN_CONF, 'log4j.properties'), 'w') as f:
-            f.write(log4j_properties['content'])
+        # with open(path.join(AZKABAN_CONF, 'log4j.properties'), 'w') as f:
+        #     f.write(log4j_properties['content'])
 
 
 if __name__ == '__main__':

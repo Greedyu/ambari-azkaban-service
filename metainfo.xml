@@ -24,7 +24,7 @@
                 the ordering through job dependencies and provides an easy to use web user interface to maintain and
                 track your workflows.
             </comment>
-            <version>3.38.0</version>
+            <version>3.47.0</version>
             <quickLinksConfigurations>
                 <quickLinksConfiguration>
                     <fileName>quicklinks.json</fileName>
@@ -34,28 +34,28 @@
             <components>
                 <component>
                     <name>AZKABAN_WEB</name>
-                    <displayName>Azkaban Web Server</displayName>
+                    <displayName>Azkaban</displayName>
                     <category>MASTER</category>
                     <cardinality>1</cardinality>
                     <versionAdvertised>true</versionAdvertised>
                     <commandScript>
-                        <script>scripts/azkaban_web.py</script>
+                        <script>scripts/azkaban_solo.py</script>
                         <scriptType>PYTHON</scriptType>
                         <timeout>1200</timeout>
                     </commandScript>
                 </component>
 
-                <component>
-                    <name>AZKABAN_EXECUTOR</name>
-                    <displayName>Azkaban Executor Server</displayName>
-                    <category>SLAVE</category>
-                    <cardinality>0+</cardinality>
-                    <versionAdvertised>true</versionAdvertised>
-                    <commandScript>
-                        <script>scripts/azkaban_executor.py</script>
-                        <scriptType>PYTHON</scriptType>
-                    </commandScript>
-                </component>
+                <!--<component>-->
+                    <!--<name>AZKABAN_EXECUTOR</name>-->
+                    <!--<displayName>Azkaban Executor Server</displayName>-->
+                    <!--<category>SLAVE</category>-->
+                    <!--<cardinality>0+</cardinality>-->
+                    <!--<versionAdvertised>true</versionAdvertised>-->
+                    <!--<commandScript>-->
+                        <!--<script>scripts/azkaban_executor.py</script>-->
+                        <!--<scriptType>PYTHON</scriptType>-->
+                    <!--</commandScript>-->
+                <!--</component>-->
 
             </components>
 
