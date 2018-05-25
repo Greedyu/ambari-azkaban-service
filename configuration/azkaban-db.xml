@@ -19,31 +19,31 @@
 
     <property>
         <name>database.type</name>
-        <value>mysql</value>
+        <value>h2</value>
     </property>
-    <property>
-        <name>mysql.host</name>
-        <value>fp-bd5</value>
-    </property>
-    <property>
-        <name>mysql.port</name>
-        <value>3306</value>
-    </property>
-    <property>
-        <name>mysql.database</name>
-        <value>azkaban</value>
-    </property>
-    <property>
-        <name>mysql.user</name>
-        <value>azkaban</value>
-    </property>
-    <property>
-        <name>mysql.password</name>
-        <value>azkaban</value>
-    </property>
-    <property>
-        <name>mysql.numconnections</name>
-        <value>100</value>
-    </property>
+    <!--<property>-->
+        <!--<name>mysql.host</name>-->
+        <!--<value>fp-bd5</value>-->
+    <!--</property>-->
+    <!--<property>-->
+        <!--<name>mysql.port</name>-->
+        <!--<value>3306</value>-->
+    <!--</property>-->
+    <!--<property>-->
+        <!--<name>mysql.database</name>-->
+        <!--<value>azkaban</value>-->
+    <!--</property>-->
+    <!--<property>-->
+        <!--<name>mysql.user</name>-->
+        <!--<value>azkaban</value>-->
+    <!--</property>-->
+    <!--<property>-->
+        <!--<name>mysql.password</name>-->
+        <!--<value>azkaban</value>-->
+    <!--</property>-->
+    <!--<property>-->
+        <!--<name>mysql.numconnections</name>-->
+        <!--<value>100</value>-->
+    <!--</property>-->
 
 </configuration>
