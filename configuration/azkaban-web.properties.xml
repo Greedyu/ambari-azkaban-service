@@ -43,12 +43,8 @@
             jetty.maxThreads=25
             #jetty.port=10101
             #
-            azkaban.use.multiple.executors=true
-            azkaban.executorselector.filters=StaticRemainingFlowSize,MinimumFreeMemory,CpuStatus
-            azkaban.executorselector.comparator.NumberOfAssignedFlowComparator=1
-            azkaban.executorselector.comparator.Memory=1
-            azkaban.executorselector.comparator.LastDispatched=1
-            azkaban.executorselector.comparator.CpuUsage=1
+            executor.global.properties=conf/global.properties
+            azkaban.project.dir=projects
             #
             h2.path=./h2
             h2.create.tables=true
