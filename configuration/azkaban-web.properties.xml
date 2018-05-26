@@ -41,14 +41,18 @@
             #
             jetty.use.ssl=false
             jetty.maxThreads=25
+            jetty.connector.stats=true
             #jetty.port=10101
             #
             executor.global.properties=conf/global.properties
             azkaban.project.dir=projects
+
             #
             h2.path=./h2
             h2.create.tables=true
             azkaban.jobtype.plugin.dir=plugins/jobtypes
+
+
         </value>
         <value-attributes>
             <type>content</type>
