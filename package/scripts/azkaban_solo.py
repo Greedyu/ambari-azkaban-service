@@ -71,8 +71,8 @@ class WebServer(Script):
         key_val_template = '{0}={1}\n'
 
         with open(path.join(AZKABAN_CONF, 'azkaban.properties'), 'w') as f:
-            for key, value in azkaban_db.iteritems():
-                f.write(key_val_template.format(key, value))
+            # for key, value in azkaban_db.iteritems():
+            #     f.write(key_val_template.format(key, value))
             for key, value in azkaban_web_properties.iteritems():
                 if key != 'content':
                     f.write(key_val_template.format(key, value))

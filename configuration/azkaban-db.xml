@@ -17,10 +17,10 @@
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
 
-    <property>
-        <name>database.type</name>
-        <value>h2</value>
-    </property>
+    <!--<property>-->
+        <!--<name>database.type</name>-->
+        <!--<value>h2</value>-->
+    <!--</property>-->
     <!--<property>-->
         <!--<name>mysql.host</name>-->
         <!--<value>fp-bd5</value>-->

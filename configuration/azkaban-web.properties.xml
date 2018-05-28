@@ -51,8 +51,6 @@
             h2.path=./h2
             h2.create.tables=true
             azkaban.jobtype.plugin.dir=plugins/jobtypes
-
-
         </value>
         <value-attributes>
             <type>content</type>
